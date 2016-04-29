@@ -1,0 +1,30 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="../src/progressbar.js"></script>
+<style>
+	.test-pbar-container
+	{
+		width: 300px;
+		border: 1px solid gray;
+		padding: 1px;
+		margin-bottom: 30px;
+		-webkit-user-select: none;
+	}
+	.test-pbar-track
+	{
+		background-color: yellow;
+		height: 10px;
+		-webkit-user-select: none;
+	}
+</style>
+
+Click at the yellow bar! <br /><br />
+
+<div class="test-pbar-container">
+	<div class="test-pbar-track -pb-progress"></div>
+</div>
+
+<script>
+	$('.test-pbar-container').progressBar({
+		smoothBar: true
+	}).progressBar('setValue', 30);
+</script>

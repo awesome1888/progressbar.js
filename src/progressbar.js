@@ -63,7 +63,7 @@ $.fn.progressBar = function(todo)
 				sdata: common, // shared data for all elements in a jquery set
 				*/
 				opts: $.extend({}, opts) // plugin options
-			}
+			};
 			
 			// further init below
 			//$this.css('position', 'relative');
@@ -88,7 +88,7 @@ $.fn.progressBar = function(todo)
 						data.opts.onValueChangeByUser.apply(data, [data.vars.value]);
 						data.opts.onDragEnd.apply(data, [data.vars.value]);
 					}
-				}
+				};
 				var mmCb = function(e)
 				{
 					e = e || window.event;
@@ -105,7 +105,7 @@ $.fn.progressBar = function(todo)
 				{
 					data.vars.followMouse = true;
 					data.opts.onDragStart.apply(data, [data.vars.value]);
-				}
+				};
 			
 				$(document).bind('mousemove.'+self.pcode, mmCb)
 					.bind('touchmove.'+self.pcode, function(e){
@@ -163,7 +163,7 @@ $.fn.progressBar = function(todo)
 			//////////////////////////////////////////////////////////
 			$this.data(self.pcode, data);
 		});
-	}
+	};
 	
 	/*** methods public ***/
 	// get value of the first element of jquery node set
@@ -171,7 +171,7 @@ $.fn.progressBar = function(todo)
 	{
 		var frst = this.eq(0).data(self.pcode).vars;
 		return getStepped ? frst.stepped : frst.value;
-	}
+	};
 	// set progress indicator position between [0, data.opts.top]
 	self.setValue = function(progress)
 	{
@@ -184,7 +184,7 @@ $.fn.progressBar = function(todo)
 
 			self._setValue.apply(data, [progress]);
 		});
-	}
+	};
 	
 	self.option = function(opt, val)
 	{
@@ -200,7 +200,7 @@ $.fn.progressBar = function(todo)
 					data.opts[opt] = val;
 			});
 		}
-	}
+	};
 
 	// takes current bar with and returns value matched to it
 	self.barWidthToValue = function(width)
@@ -214,7 +214,7 @@ $.fn.progressBar = function(todo)
 			width = frst.ctrls.bar.width();
 
 		return width / frst.dom.width() * frst.opts.top;
-	}
+	};
 
 	/*** methods private ***/
 	// translate backward: mouse coords => progressbar position => value
@@ -255,7 +255,7 @@ $.fn.progressBar = function(todo)
 
 		this.ctrls.bar.css('width', pos+'px');
 		this.opts.onTrackBarChange.apply(this, [this.vars.tempValue, pos]);
-	}
+	};
 	// translate forward: value => progressbar position
 	self._setValue = function(progress, strict)
 	{
@@ -275,7 +275,7 @@ $.fn.progressBar = function(todo)
 		{
 			this.vars.value = progress;
 			this.opts.onValueChange.apply(this, [this.vars.value]);
-		}
+		};
 
 		// ajust along the grid
 		if(this.opts.step > 1){
@@ -322,7 +322,7 @@ $.fn.progressBar = function(todo)
 		}
 
 		return true;
-	}
+	};
 	self._map = function(value)
 	{
 		var mapped = Math.round(value * this.dom.width() / this.opts.top);
@@ -330,7 +330,7 @@ $.fn.progressBar = function(todo)
 			mapped = this.vars.top;
 
 		return mapped;
-	}
+	};
 	
 	// todo
 	if(typeof(todo) == 'string' && todo[0] != '_' && typeof(self[todo]) == 'function') // todo is a method, call it
@@ -341,4 +341,4 @@ $.fn.progressBar = function(todo)
 	{
 		return self.init.apply(this, arguments);
 	}
-}
+};
